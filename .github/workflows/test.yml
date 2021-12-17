@@ -12,7 +12,7 @@ jobs:
       # Prepare a minimal environment
       - name: Prepare folder
         run: |
-          cd ./test/
+          cp -r test/_notebooks .
           mkdir -p _posts assets/images
       # Run this action
       - name: Convert Jupyter notebooks to Markdown blog posts
@@ -23,6 +23,6 @@ jobs:
           # Check that the new layout is available
           [ -e _layouts/notebook.html ] || exit 1
           # Make regression test of resulting post
-          diff _posts/2000-01-01-test.md regression/2000-01-01-test.md || exit 1
+          diff _posts/2000-01-01-test.md test/regression/2000-01-01-test.md || exit 1
           # Check that image was created
           [ -e assets/images/2000-01-01-test_files/2000-01-01-test_2_0.png ] || exit 1
