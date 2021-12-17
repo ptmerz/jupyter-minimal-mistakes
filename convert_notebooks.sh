@@ -1,10 +1,5 @@
 #!/bin/bash
 
-echo "DEBUG: pwd"
-pwd
-echo "DEBUG: ls -a -l"
-ls -a -l
-
 # Sanity checks for root directory
 if [ ! -d ./_notebooks ]; then
   # We can't do anything, but we return success so this action can
@@ -23,7 +18,7 @@ fi
 root_directory=$PWD
 
 # Make sure that notebook format is available
-mkdir -p _layouts
+mkdir -p _layouts || exit 1
 # If notebook.html exists, we don't copy it there. This allows users to have their own version
 # of the layout - at their own responsibility.
 if [ -e _layouts/notebook.html ]; then
@@ -60,3 +55,5 @@ for notebook_file in *.ipynb; do
   mv "${filename}_files" "${root_directory}/assets/images/"
 done
 cd "$root_directory" || exit 1
+
+echo "Conversion successful."
