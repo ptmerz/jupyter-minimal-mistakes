@@ -27,6 +27,7 @@ jobs:
         run: |
           echo $PWD
           ls -a -l
+          chmod +x convert_notebooks.sh
 
       # Runs a single command using the runners shell
       - name: test
