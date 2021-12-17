@@ -49,3 +49,17 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## Run locally
+If you want to run this action locally, e.g. to preview the site, this should work:
+1. Clone this repo
+2. Assuming your site is in folder `username.github.io`, and you have cloned this into folder `jupyter-minimal-mistakes`, copy the layout files into the site folder:
+   ```
+   mkdir -p username.github.io/_layouts
+   cp jupyter-minimal-mistakes/_layouts/notebook.html username.github.io/_layouts/notebook.html
+   ```
+3. From the site folder, call the `convert_notebooks.sh` script:
+   ```
+   cd username.github.io
+   sh ../jupyter-minimal-mistakes/convert_notebooks.sh
+   ```
