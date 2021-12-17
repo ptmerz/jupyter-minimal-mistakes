@@ -1,0 +1,36 @@
+name: Test
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out current repo
+      - name: Checkout current repository
+        uses: actions/checkout@v2
+      # Prepare a minimal environment
+      - name: Prepare folder
+        run: |
+          cp -r test/_notebooks .
+          mkdir -p _posts assets/images
+      # Run this action
+      - name: Convert Jupyter notebooks to Markdown blog posts
+        uses: ./
+      # Check results of action
+      - name: Check results
+        run: |
+          # Check that the new layout is available
+          [ -e _layouts/notebook.html ] || exit 1
+          # Make regression test of resulting post
+          diff _posts/2000-01-01-test.md test/regression/2000-01-01-test.md || exit 1
+          # Check that image was created
+          [ -e assets/images/2000-01-01-test_files/2000-01-01-test_2_0.png ] || exit 1
