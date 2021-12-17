@@ -16,7 +16,7 @@ jobs:
           mkdir -p _posts assets/images
       # Run this action
       - name: Convert Jupyter notebooks to Markdown blog posts
-        uses: ptmerz/jupyter-minimal-mistakes
+        uses: ..
       # Check results of action
       - name: Check results
         run: |
