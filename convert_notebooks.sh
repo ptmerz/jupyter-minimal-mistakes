@@ -36,7 +36,7 @@ for notebook_file in *.ipynb; do
   # Name of Markdown file will be base name + ".md"
   md_notebook="${filename}.md"
   # Convert notebook to Markdown
-  jupyter nbconvert "$notebook_file" --to markdown
+  jupyter nbconvert "$notebook_file" --to markdown || exit 1
   # Fix image links to point to a place where Jekyll will pick up the images
   perl -pi -e 's/\!\[png\]\(/![png]({{ site.url }}{{ site.baseurl }}\/assets\/images\//g' "$md_notebook"
   
@@ -49,10 +49,12 @@ for notebook_file in *.ipynb; do
   
   # Move Markdown notebook to _posts/ directory
   rm -f "${root_directory}/_posts/${md_notebook}"
-  mv "$md_notebook" "${root_directory}/_posts/"
-  # Move images to a assets such that Jekyll finds them
-  rm -rf "${root_directory}/assets/images/${filename}_files"
-  mv "${filename}_files" "${root_directory}/assets/images/"
+  mv "$md_notebook" "${root_directory}/_posts/" || exit 1
+  if [ -d "${filename}_files" ]; then
+    # Move images to a assets such that Jekyll finds them
+    rm -rf "${root_directory}/assets/images/${filename}_files"
+    mv "${filename}_files" "${root_directory}/assets/images/" || exit 1
+  fi
 done
 cd "$root_directory" || exit 1
 
