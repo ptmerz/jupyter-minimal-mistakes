@@ -17,7 +17,7 @@ This action should work with any Jekyll blog which uses the Minimal Mistakes the
 The action defines a new `notebook` layout, which gets stored in `_layouts/notebook.html`. If this file exists, the action will not change it. This allows users to make changes to the layout.
 
 ## Badges
-This action optionally adds two badges at the beginning of the blog post that allow to view the generating notebook on GitHub or Google Colab. This functionality is enabled using the YAML front matter by setting `badges: true`.
+This action optionally adds two badges at the beginning of the blog post that allow to view the generating notebook on GitHub or Google Colab. This functionality is enabled using the YAML front matter by setting `badges: true`. If `badges: false` or the `badges` tag is not set (default), the badges are not added.
 
 ## Example usage
 The action can be used to convert Jupyter notebooks to Markdown posts before building the site with Jekyll and deploying it to GitHub pages. In this example, the current `main` branch of the blog repository (typically `<username>/<username>.github.io`) is checked out, then `jupyter-minimal-mistakes` is used to convert the notebooks before another action builds the site and pushes the result to the `gh_pages` branch.
