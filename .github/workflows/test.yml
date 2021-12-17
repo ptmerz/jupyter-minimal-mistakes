@@ -15,8 +15,8 @@ jobs:
           cd ./test/
           mkdir -p _posts assets/images
       # Run this action
-       - name: Convert Jupyter notebooks to Markdown blog posts
-         uses: ../
+      - name: Convert Jupyter notebooks to Markdown blog posts
+        uses: ./..
       # Check results of action
       - name: Check results
         run: |
