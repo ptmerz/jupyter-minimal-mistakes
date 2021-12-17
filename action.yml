@@ -1,0 +1,5 @@
+name: 'Jupyter Minimal Mistakes'
+description: 'Convert Jupyter notebooks to Markdown blog posts ready for use with Jekyll and the Minimal Mistakes theme'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
