@@ -23,10 +23,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-- name: pre-test
-  run: |
-    echo $PWD
-    ls -a -l
+      - name: pre-test
+        run: |
+          echo $PWD
+          ls -a -l
+
       # Runs a single command using the runners shell
       - name: test
         uses: ./action.yml
