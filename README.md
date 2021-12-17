@@ -2,6 +2,11 @@
 
 This GitHub action turns Jupyter notebooks into Markdown posts to be used with the Minimal Mistakes Jekyll theme.
 
+## TL;DR
+* Store Jupyter notebooks in `_notebooks/` folder, name them like Jekyll posts (`YYYY-MM-DD-title.ipynb`).
+* Add this action between checkout and Jekyll build / deploy. It will convert the notebooks into Markdown posts, and do all necessary file organization such that Jekyll picks them up properly.
+* It can add cool badges 😎
+
 ## Functionality
 This action takes Jupyter notebooks stored in the `_notebooks/` folder, and turns them into Markdown posts stored in the `_posts/` folder. It also takes care of moving images to a location which gets picked up by Jekyll. Finally, it can optionally add badges to view the notebook on GitHub or in Google Colab.
 
