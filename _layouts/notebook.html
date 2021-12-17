@@ -1,0 +1,22 @@
+---
+layout: single
+---
+
+{% if page.badges %}
+  <hr>
+  <div style="display: flex; justify-content: center;">
+    <div style="padding-left: 0.5em; padding-right: 0.5em;">
+      <a href="https://github.com/{{ site.repository }}/blob/main/_notebooks/{{ page.filename }}" target="_blank">
+        <img src="https://img.shields.io/static/v1?label=&message=Open%20on%20GitHub&logo=github&color=lightgray&labelColor=gray" alt="Open on GitHub">
+      </a>
+    </div>
+    <div style="padding-left: 0.5em; padding-right: 0.5em;">
+      <a href="https://colab.research.google.com/github/{{ site.repository }}/blob/main/_notebooks/{{ page.filename }}" target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+      </a>
+    </div>
+  </div>
+  <hr>
+{% endif %}
+
+{{ content }}
