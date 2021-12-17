@@ -5,7 +5,7 @@ This GitHub action turns Jupyter notebooks into Markdown posts to be used with t
 ## Functionality
 This action takes Jupyter notebooks stored in the `_notebooks/` folder, and turns them into Markdown posts stored in the `_posts/` folder. It also takes care of moving images to a location which gets picked up by Jekyll. Finally, it can optionally add badges to view the notebook on GitHub or in Google Colab.
 
-The action does not build the Jekyll site, nor does it commit the new files, but it can be combined with other actions to take care of this.
+The action does not check out the site, build the Jekyll site, or commit the new files, but it can be combined with other actions to take care of these tasks. See the example usage below for illustration.
 
 Notebooks have to be stored in the `_notebooks` folder. The resulting Markdown files are stored under the same filename, replacing the `.ipynb` suffix by `.md`. The notebooks should therefore follow the typical Jekyll blog post naming convention `YYYY-MM-DD-title.ipynb`.
 
@@ -17,6 +17,9 @@ This action should work with any Jekyll blog which uses the Minimal Mistakes the
 The action defines a new `notebook` layout, which gets stored in `_layouts/notebook.html`. If this file exists, the action will not change it. This allows users to make changes to the layout.
 
 ## Badges
+![Open on GitHub](https://img.shields.io/static/v1?label=&message=Open%20on%20GitHub&logo=github&color=lightgray&labelColor=gray)
+![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)
+
 This action optionally adds two badges at the beginning of the blog post that allow to view the generating notebook on GitHub or Google Colab. This functionality is enabled using the YAML front matter by setting `badges: true`. If `badges: false` or the `badges` tag is not set (default), the badges are not added.
 
 ## Example usage
