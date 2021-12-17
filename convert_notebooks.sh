@@ -6,12 +6,14 @@ echo "DEBUG: ls -a -l"
 ls -a -l
 
 # Sanity checks for root directory
+if [ ! -d ./_notebooks ]; then
+  # We can't do anything, but we return success so this action can
+  # be part of a repo that has no notebooks without causing failures
+  echo "Cannot find notebook directory ./_notebooks" >&2
+  exit 0
+fi
 if [ ! -d ./_posts ]; then
   echo "Cannot find posts directory ./_posts" >&2
-  exit 1
-fi
-if [ ! -d ./_notebooks ]; then
-  echo "Cannot find notebook directory ./_notebooks" >&2
   exit 1
 fi
 if [ ! -d ./assets/images/ ]; then
